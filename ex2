@@ -1,0 +1,21 @@
+.text
+.globl main
+
+main: li $t2, 0
+
+LOOP: la $t0, a
+
+addu $t4, $t2, $t2
+addu $t4, $t4, $t4
+addu $t3, $t4, $t0
+
+lw $t1, 0($t3)
+addiu $t1, $t1, 10
+sw $t1, 0($t3)
+addiu $t2, $t2, 1
+BNE $t2, 5, LOOP
+li $v0, 10
+syscall
+
+.data
+a: .word 1 2 3 4 5
